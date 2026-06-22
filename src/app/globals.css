@@ -1,0 +1,187 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f8fafc; /* Fresh light slate base background */
+  --foreground: #0f172a; /* Slate-900 */
+  --accent: #2563eb;     /* Blue-600 */
+  --accent-glow: rgba(37, 99, 235, 0.08);
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(15, 23, 42, 0.08);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), system-ui, -apple-system, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Smooth Scrolling over whole document */
+html {
+  scroll-behavior: smooth;
+  background-color: #f8fafc;
+}
+
+/* Glassmorphism utility classes — no backdrop-filter for performance */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid var(--glass-border);
+}
+
+.glass-panel-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.glass-panel-hover:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(59, 130, 246, 0.25);
+  box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.12);
+}
+
+/* Glow effects */
+.glow-effect {
+  position: relative;
+}
+.glow-effect::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: 0 0 25px var(--accent-glow);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+.glow-effect:hover::after {
+  opacity: 1;
+}
+
+/* GPU-optimized floating gradient animations (translate3d forces compositor layer) */
+@keyframes float-slow-1 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  33% {
+    transform: translate3d(30px, -50px, 0) scale(1.05);
+  }
+  66% {
+    transform: translate3d(-20px, 20px, 0) scale(0.97);
+  }
+}
+
+@keyframes float-slow-2 {
+  0%, 100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  40% {
+    transform: translate3d(-50px, 30px, 0) scale(1.08);
+  }
+  80% {
+    transform: translate3d(30px, -20px, 0) scale(0.95);
+  }
+}
+
+.animate-float-1 {
+  animation: float-slow-1 25s infinite ease-in-out;
+}
+
+.animate-float-2 {
+  animation: float-slow-2 30s infinite ease-in-out;
+}
+
+/* ─── CSS-only Scroll Reveal Animations ─── */
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes reveal-down {
+  from { opacity: 0; transform: translateY(-30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes reveal-left {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes reveal-right {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+@keyframes reveal-none {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.scroll-reveal-up {
+  animation: reveal-up 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.scroll-reveal-down {
+  animation: reveal-down 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.scroll-reveal-left {
+  animation: reveal-left 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.scroll-reveal-right {
+  animation: reveal-right 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.scroll-reveal-none {
+  animation: reveal-none 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* Respect user preference for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .scroll-reveal-up,
+  .scroll-reveal-down,
+  .scroll-reveal-left,
+  .scroll-reveal-right,
+  .scroll-reveal-none,
+  .animate-float-1,
+  .animate-float-2 {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* Watermark & Logo removal for Spline embeds */
+a[href*="spline.design"],
+a[href*="spline"],
+div[id*="logo"],
+[class*="spline-watermark"],
+.built-with-spline,
+spline-viewer::part(logo) {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
+
+/* Make Spline 3D canvas backgrounds transparent to match the site background */
+.spline-container canvas,
+#canvas3d,
+canvas[data-engine*="three"] {
+  background: transparent !important;
+  background-color: transparent !important;
+}
+
