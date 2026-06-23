@@ -51,13 +51,13 @@ const highlightedServices = [
 // Mock testimonials
 const testimonials = [
   {
-    quote: "Menerbitkan buku biografi saya di PT Cakrawala Candradimuka Literasi adalah keputusan terbaik. Tim editor sangat teliti dan desain covernya luar biasa indah.",
+    quote: "Menerbitkan buku saya di PT Cakrawala Candradimuka Literasi adalah keputusan terbaik. Tim editor sangat teliti dan desain covernya luar biasa indah.",
     author: "Dr. Farikah, M.Pd",
     role: "Akademisi dan Peneliti",
     rating: 5,
   },
   {
-    quote: "Proses pengurusan ISBN resmi sangat cepat dan transparan. Buku kumpulan puisi saya juga dicetak dengan kualitas kertas premium yang sangat nyaman dibaca.",
+    quote: "Proses pengurusan ISBN resmi sangat cepat dan transparan. Buku saya juga dicetak dengan kualitas kertas premium yang sangat nyaman dibaca.",
     author: "Dr. Muhamad Wahyudi, S.Pd., M.Si",
     role: "Akademisi dan Peneliti",
     rating: 5,
