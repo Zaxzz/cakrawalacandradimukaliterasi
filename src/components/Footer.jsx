@@ -29,15 +29,19 @@ export default function Footer() {
             <p className="text-slate-600 text-sm leading-relaxed max-w-xs">
               Mewujudkan buku berkualitas untuk generasi literasi Indonesia. Kami melayani jasa penerbitan, penulisan, penyuntingan, pencetakan, dan distribusi naskah secara profesional.
             </p>
-            {/* Social Links Mock */}
+            {/* Social Links */}
             <div className="flex items-center gap-3">
-              {["Instagram", "Facebook", "LinkedIn", "YouTube"].map((social) => (
+              {[
+                { name: "Instagram", href: "https://www.instagram.com/cakrawalacandradimuka.literasi/" }
+              ].map((social) => (
                 <Link
-                  key={social}
-                  href="#"
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-xs text-slate-500 hover:text-slate-900 px-3 py-1.5 rounded-full border border-slate-200 hover:border-slate-300 hover:bg-white transition-all"
                 >
-                  {social}
+                  {social.name}
                 </Link>
               ))}
             </div>
@@ -110,14 +114,14 @@ export default function Footer() {
               </li>
               <li className="flex gap-3 text-slate-600 text-sm">
                 <Phone className="w-4 h-4 text-blue-500 shrink-0 mt-1" />
-                <Link href="https://wa.me/6281234567890" target="_blank" className="hover:text-slate-900 transition-colors">
-                  +62 812-3456-7890
+                <Link href="https://wa.me/6285888071724" target="_blank" className="hover:text-slate-900 transition-colors">
+                  +62 858-8807-1724
                 </Link>
               </li>
               <li className="flex gap-3 text-slate-600 text-sm">
                 <Mail className="w-4 h-4 text-blue-500 shrink-0 mt-1" />
-                <Link href="mailto:info@cakrawalapublisher.com" className="hover:text-slate-900 transition-colors">
-                  info@cakrawalapublisher.com
+                <Link href="mailto:cakrawalacandradimukaliterasi@gmail.com" className="hover:text-slate-900 transition-colors">
+                  cakrawalacandradimukaliterasi@gmail.com
                 </Link>
               </li>
               <li className="flex gap-3 text-slate-600 text-sm">

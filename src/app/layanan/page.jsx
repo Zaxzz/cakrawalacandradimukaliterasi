@@ -130,7 +130,7 @@ export default function Layanan() {
                   {/* Dynamic CTA trigger link */}
                   <div className="mt-8 pt-6 border-t border-slate-100">
                     <Link
-                      href={`https://wa.me/6281234567890?text=Halo%20PT%20Cakrawala%20Candradimuka%20Literasi,%20saya%20tertarik%20dengan%20layanan%20${encodeURIComponent(
+                      href={`https://wa.me/6285888071724?text=Halo%20PT%20Cakrawala%20Candradimuka%20Literasi,%20saya%20tertarik%20dengan%20layanan%20${encodeURIComponent(
                         srv.title
                       )}`}
                       target="_blank"

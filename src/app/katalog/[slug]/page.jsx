@@ -1,18 +1,69 @@
 "use client";
 
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowLeft, BookOpen, Calendar, Hash, Tag, FileText, MessageSquare, ChevronRight } from "lucide-react";
+import { ArrowLeft, BookOpen, Calendar, Hash, Tag, FileText, MessageSquare, ChevronRight, AlertTriangle } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import FloatingGradients from "@/components/FloatingGradients";
-import booksData from "@/data/katalog.json";
 
 export default function DetailBuku({ params }) {
-  // Unwrap params using React.use (Next.js 15 standard)
+  // Unwrap params using React.use (Next.js 15/16 standard)
   const { slug } = React.use(params);
 
-  // Find book matching the slug
-  const book = booksData.find((b) => b.slug === slug);
+  const [book, setBook] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isFallback, setIsFallback] = useState(false);
+
+  // Fetch book details from API
+  useEffect(() => {
+    async function fetchBookDetail() {
+      try {
+        const res = await fetch(`/api/katalog?slug=${slug}`);
+        if (res.ok) {
+          const data = await res.json();
+          setBook(data.book || null);
+          setIsFallback(data.isFallback || false);
+        } else {
+          setBook(null);
+        }
+      } catch (err) {
+        console.error("Gagal mengambil detail buku:", err);
+        setBook(null);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+
+    if (slug) {
+      fetchBookDetail();
+    }
+  }, [slug]);
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <div className="relative min-h-screen pb-24 overflow-hidden">
+        <FloatingGradients />
+        <div className="max-w-7xl mx-auto px-6 pt-10 pb-6 relative z-10">
+          <div className="h-4 bg-slate-200 rounded w-32 animate-pulse" />
+        </div>
+        <section className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+            <div className="lg:col-span-5 flex justify-center">
+              <div className="aspect-[3/4] w-full max-w-md rounded-2xl bg-slate-200 animate-pulse shadow-sm" />
+            </div>
+            <div className="lg:col-span-7">
+              <div className="h-6 bg-slate-200 rounded w-20 mb-4 animate-pulse" />
+              <div className="h-10 bg-slate-200 rounded w-3/4 mb-3 animate-pulse" />
+              <div className="h-6 bg-slate-200 rounded w-1/2 mb-8 animate-pulse" />
+              <div className="h-24 bg-slate-200 rounded w-full mb-8 animate-pulse" />
+              <div className="h-12 bg-slate-200 rounded w-1/3 animate-pulse" />
+            </div>
+          </div>
+        </section>
+      </div>
+    );
+  }
 
   if (!book) {
     return (
@@ -44,14 +95,14 @@ export default function DetailBuku({ params }) {
     `ISBN: ${book.isbn}\n\n` +
     `Saya ingin berkonsultasi mengenai pemesanan / informasi lebih lanjut.`
   );
-  const waUrl = `https://wa.me/6281234567890?text=${waMessage}`;
+  const waUrl = `https://wa.me/6285888071724?text=${waMessage}`;
 
   return (
-    <div className="relative min-h-screen pb-24 overflow-hidden">
+    <div className=" min-h-screen pb-24 overflow-hidden">
       <FloatingGradients />
 
       {/* Back navigation bar */}
-      <div className="max-w-7xl mx-auto px-6 pt-10 pb-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-6 pt-10 pb-6 relative z-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
         <ScrollReveal>
           <Link
             href="/katalog"
@@ -61,6 +112,15 @@ export default function DetailBuku({ params }) {
             <span>Kembali ke Katalog</span>
           </Link>
         </ScrollReveal>
+
+        {isFallback && (
+          <ScrollReveal>
+            <div className="p-2 px-4 rounded-full bg-amber-50 border border-amber-200 text-amber-700 text-xs font-semibold inline-flex items-center gap-1.5 shadow-sm">
+              <AlertTriangle className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+              <span>Offline Mode: Menampilkan data lokal cadangan</span>
+            </div>
+          </ScrollReveal>
+        )}
       </div>
 
       {/* Detail grid content */}
@@ -72,7 +132,11 @@ export default function DetailBuku({ params }) {
             <ScrollReveal direction="left" className="w-full max-w-md">
               <div
                 className="aspect-[3/4] w-full rounded-2xl p-10 relative flex flex-col justify-between select-none overflow-hidden shadow-xl shadow-slate-300/50 border border-slate-200/20"
-                style={{ background: book.coverBg }}
+                style={{ 
+                  backgroundImage: book.coverImage ? `url(${book.coverImage})` : book.coverBg,
+                  backgroundSize: 'cover',
+                  backgroundPosition: 'center'
+                }}
               >
                 {/* Book spine simulation overlay */}
                 <div className="absolute top-0 bottom-0 left-0 w-3 bg-gradient-to-r from-black/30 to-transparent z-10" />
@@ -153,20 +217,22 @@ export default function DetailBuku({ params }) {
               </div>
 
               {/* Preview Chapters Section */}
-              <div className="mb-10">
-                <h3 className="text-lg font-bold text-slate-900 mb-3">Pratinjau Bab (Preview)</h3>
-                <div className="flex flex-col gap-2">
-                  {book.previewGallery.map((preview, i) => (
-                    <div
-                      key={i}
-                      className="flex items-center justify-between p-3.5 rounded-xl bg-white border border-slate-200/60 text-slate-700 text-sm font-medium hover:bg-slate-50 hover:text-slate-900 transition-all cursor-default shadow-sm"
-                    >
-                      <span>{preview}</span>
-                      <ChevronRight className="w-4 h-4 text-slate-400" />
-                    </div>
-                  ))}
+              {book.previewGallery && book.previewGallery.length > 0 && (
+                <div className="mb-10">
+                  <h3 className="text-lg font-bold text-slate-900 mb-3">Pratinjau Bab (Preview)</h3>
+                  <div className="flex flex-col gap-2">
+                    {book.previewGallery.map((preview, i) => (
+                      <div
+                        key={i}
+                        className="flex items-center justify-between p-3.5 rounded-xl bg-white border border-slate-200/60 text-slate-700 text-sm font-medium hover:bg-slate-50 hover:text-slate-900 transition-all cursor-default shadow-sm"
+                      >
+                        <span>{preview}</span>
+                        <ChevronRight className="w-4 h-4 text-slate-400" />
+                      </div>
+                    ))}
+                  </div>
                 </div>
-              </div>
+              )}
 
               {/* Call-to-action details */}
               <div className="pt-6 border-t border-slate-200/50">
@@ -188,3 +254,4 @@ export default function DetailBuku({ params }) {
     </div>
   );
 }
+

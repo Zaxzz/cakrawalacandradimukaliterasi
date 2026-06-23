@@ -55,7 +55,7 @@ export default function RootLayout({ children }) {
         <SmoothScroll>
           <MouseTrail />
           <Navbar />
-          <main className="flex-1 flex flex-col pt-[72px] md:pt-[88px] relative z-10">
+          <main className="flex-1 flex flex-col pt-[72px] md:pt-[88px]">
             {children}
           </main>
           <Footer />

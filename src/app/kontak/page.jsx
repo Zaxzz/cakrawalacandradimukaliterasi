@@ -59,12 +59,12 @@ export default function Kontak() {
                 <div>
                   <h5 className="font-bold text-slate-900 mb-1.5">WhatsApp Penerbitan</h5>
                   <a
-                    href="https://wa.me/6281234567890"
+                    href="https://wa.me/6285888071724"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-slate-500 text-sm hover:text-slate-900 transition-colors font-medium"
                   >
-                    +62 812-3456-7890
+                    +62 858-8807-1724
                   </a>
                 </div>
               </div>
@@ -75,10 +75,10 @@ export default function Kontak() {
                 <div>
                   <h5 className="font-bold text-slate-900 mb-1.5">Surel / Email</h5>
                   <a
-                    href="mailto:info@cakrawalapublisher.com"
+                    href="mailto:cakrawalacandradimukaliterasi@gmail.com"
                     className="text-slate-500 text-sm hover:text-slate-900 transition-colors font-medium"
                   >
-                    info@cakrawalapublisher.com
+                    cakrawalacandradimukaliterasi@gmail.com
                   </a>
                 </div>
               </div>
@@ -112,7 +112,7 @@ export default function Kontak() {
             Tidak usah bingung melangkah. Anda juga dapat langsung berkonsultasi secara interaktif melalui chat WhatsApp bersama representasi kami.
           </p>
           <a
-            href="https://wa.me/6281234567890?text=Halo%20PT%20Cakrawala%20Candradimuka%20Literasi,%20saya%20ingin%20bertanya%20mengenai..."
+            href="https://wa.me/6285888071724?text=Halo%20PT%20Cakrawala%20Candradimuka%20Literasi,%20saya%20ingin%20bertanya%20mengenai..."
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-full bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-slate-900 font-semibold transition-all shadow-sm hover:shadow-md hover:scale-102"

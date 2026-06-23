@@ -39,12 +39,12 @@ export default function Navbar() {
           {/* Logo Brand */}
           <Link href="/" className="flex items-center gap-2.5 group">
             <div className="w-10 h-10 rounded-xl overflow-hidden shadow-lg shadow-blue-500/5 group-hover:scale-105 transition-transform bg-white flex items-center justify-center border border-slate-100">
-              <Image 
-                src="/CCL_header.png" 
-                alt="CCL Logo" 
+              <Image
+                src="/CCL_header.png"
+                alt="CCL Logo"
                 width={40}
                 height={40}
-                className="w-full h-full object-contain" 
+                className="w-full h-full object-contain"
               />
             </div>
             <div className="flex flex-col">
@@ -65,9 +65,8 @@ export default function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className={`relative px-4 py-2 text-sm font-medium transition-colors hover:text-slate-900 ${
-                    isActive ? "text-slate-900 font-semibold" : "text-slate-500 hover:text-slate-800"
-                  }`}
+                  className={`relative px-4 py-2 text-sm font-medium transition-colors hover:text-slate-900 ${isActive ? "text-slate-900 font-semibold" : "text-slate-500 hover:text-slate-800"
+                    }`}
                 >
                   {isActive && (
                     <motion.span
@@ -85,13 +84,13 @@ export default function Navbar() {
           {/* Consultation Button */}
           <div className="hidden md:block">
             <Link
-              href="https://wa.me/6281234567890?text=Halo%20PT%20Cakrawala%20Candradimuka%20Literasi,%20saya%20ingin%20konsultasi%20mengenai%20penerbitan%20buku."
+              href="https://wa.me/6285888071724?text=Halo%20PT%20Cakrawala%20Candradimuka%20Literasi,%20saya%20ingin%20konsultasi%20mengenai%20penerbitan%20buku."
               target="_blank"
               rel="noopener noreferrer"
               className="flex items-center gap-2 px-5 py-2.5 rounded-full bg-white border border-slate-200 hover:bg-slate-50 text-slate-700 hover:text-slate-900 font-semibold text-sm transition-all duration-300 shadow-sm hover:scale-102"
             >
               <MessageSquare className="w-4 h-4" />
-              <span>Konsultasi Gratis</span>
+              <span>Konsultasi</span>
             </Link>
           </div>
 
@@ -128,11 +127,10 @@ export default function Navbar() {
                   >
                     <Link
                       href={link.href}
-                      className={`text-2xl font-bold block py-2 ${
-                        isActive
+                      className={`text-2xl font-bold block py-2 ${isActive
                           ? "bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-violet-600"
                           : "text-slate-600 hover:text-slate-900"
-                      }`}
+                        }`}
                     >
                       {link.label}
                     </Link>
@@ -148,13 +146,13 @@ export default function Navbar() {
               className="mb-12 flex flex-col gap-4"
             >
               <Link
-                href="https://wa.me/6281234567890?text=Halo%20PT%20Cakrawala%20Candradimuka%20Literasi,%20saya%20ingin%20konsultasi%20mengenai%20penerbitan%20buku."
+                href="https://wa.me/6285888071724?text=Halo%20PT%20Cakrawala%20Candradimuka%20Literasi,%20saya%20ingin%20konsultasi%20mengenai%20penerbitan%20buku."
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-white border border-slate-200 text-slate-700 hover:bg-slate-50 hover:text-slate-900 font-semibold text-base transition-transform active:scale-98 shadow-sm"
               >
                 <MessageSquare className="w-5 h-5" />
-                <span>Konsultasi Gratis</span>
+                <span>Konsultasi</span>
               </Link>
               <p className="text-center text-xs text-slate-400">
                 PT Cakrawala Candradimuka Literasi &copy; 2026

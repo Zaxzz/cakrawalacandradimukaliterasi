@@ -121,13 +121,13 @@ export default function Home() {
             </Link>
 
             <Link
-              href="https://wa.me/6281234567890?text=Halo%20PT%20Cakrawala%20Candradimuka%20Literasi,%20saya%20tertarik%20ingin%20berkonsultasi%20mengenai%20naskah%20buku%20saya."
+              href="https://wa.me/6285888071724?text=Halo%20PT%20Cakrawala%20Candradimuka%20Literasi,%20saya%20tertarik%20ingin%20berkonsultasi%20mengenai%20naskah%20buku%20saya."
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto px-8 py-4 rounded-full bg-transparent border border-slate-200 text-slate-700 font-semibold hover:bg-slate-100 hover:text-slate-900 transition-all duration-300 flex items-center justify-center gap-2"
             >
               <MessageSquare className="w-4 h-4 text-blue-600" />
-              <span>Konsultasi Gratis</span>
+              <span>Konsultasi</span>
             </Link>
           </motion.div>
         </div>
