@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
-import { ArrowLeft, BookOpen, Calendar, Hash, Tag, FileText, MessageSquare, ChevronRight, AlertTriangle } from "lucide-react";
+import { ArrowLeft, BookOpen, Calendar, Hash, Tag, FileText, MessageSquare, ChevronRight, AlertTriangle, Maximize } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import FloatingGradients from "@/components/FloatingGradients";
 
@@ -181,7 +181,7 @@ export default function DetailBuku({ params }) {
               </div>
 
               {/* Specifications Grid */}
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-5 rounded-2xl bg-white border border-slate-200/50 backdrop-blur-sm mb-8 shadow-sm">
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 p-5 rounded-2xl bg-white border border-slate-200/50 backdrop-blur-sm mb-8 shadow-sm">
                 <div className="flex flex-col gap-1.5">
                   <span className="text-xs text-slate-400 flex items-center gap-1">
                     <Hash className="w-3.5 h-3.5" /> ISBN
@@ -199,6 +199,12 @@ export default function DetailBuku({ params }) {
                     <FileText className="w-3.5 h-3.5" /> Halaman
                   </span>
                   <span className="text-sm font-semibold text-slate-700">{book.pages} Halaman</span>
+                </div>
+                <div className="flex flex-col gap-1.5">
+                  <span className="text-xs text-slate-400 flex items-center gap-1">
+                    <Maximize className="w-3.5 h-3.5" /> Ukuran
+                  </span>
+                  <span className="text-sm font-semibold text-slate-700">{book.size || "14.8 x 21 cm"}</span>
                 </div>
                 <div className="flex flex-col gap-1.5">
                   <span className="text-xs text-slate-400 flex items-center gap-1">

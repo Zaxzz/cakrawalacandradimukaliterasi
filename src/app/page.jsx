@@ -13,7 +13,7 @@ import {
   Star,
   Quote,
   TrendingUp,
-  Sparkles,
+  PenTool,
 } from "lucide-react";
 import ScrollReveal from "@/components/ScrollReveal";
 import FloatingGradients from "@/components/FloatingGradients";
@@ -31,7 +31,7 @@ const highlightedServices = [
   {
     title: "Penulisan & Ghostwriting",
     description: "Pendampingan penyusunan naskah biografi, buku ilmiah, atau populer dari ide dasar hingga naskah utuh siap terbit.",
-    icon: Sparkles,
+    icon: PenTool,
     color: "from-blue-500/20 to-indigo-500/20",
   },
   {
@@ -52,20 +52,20 @@ const highlightedServices = [
 const testimonials = [
   {
     quote: "Menerbitkan buku biografi saya di PT Cakrawala Candradimuka Literasi adalah keputusan terbaik. Tim editor sangat teliti dan desain covernya luar biasa indah.",
-    author: "Prof. Dr. Ir. H. Ahmad Fauzi",
-    role: "Guru Besar & Akademisi",
+    author: "Dr. Farikah, M.Pd",
+    role: "Akademisi dan Peneliti",
     rating: 5,
   },
   {
     quote: "Proses pengurusan ISBN resmi sangat cepat dan transparan. Buku kumpulan puisi saya juga dicetak dengan kualitas kertas premium yang sangat nyaman dibaca.",
-    author: "Dian Sasmita",
-    role: "Penulis Novel & Penyair",
+    author: "Dr. Muhamad Wahyudi, S.Pd., M.Si",
+    role: "Akademisi dan Peneliti",
     rating: 5,
   },
   {
-    quote: "Sebagai institusi, kami sangat terbantu dengan program pendampingan literasi penulisan buku antologi bersama guru-guru. Sangat profesional!",
-    author: "Budi Rahardjo, M.Pd.",
-    role: "Kepala Yayasan Pendidikan",
+    quote: "Penerbit Cakrawala Candradimuka Literasi memberikan kemudahan dalam proses penerbitan buku dan komunikatif dalam melayani, sangat terbantu untuk menerbitkan karya buku",
+    author: "Delfiyan Widiyanto, M.Pd",
+    role: "Akademisi dan Peneliti",
     rating: 5,
   },
 ];

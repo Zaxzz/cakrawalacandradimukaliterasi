@@ -33,6 +33,7 @@ export async function POST(request) {
       isbn,
       year,
       pages,
+      size,
       category,
       synopsis,
       coverBg,
@@ -43,7 +44,7 @@ export async function POST(request) {
     } = body;
 
     // Validation
-    if (!slug || !title || !author || !isbn || !year || !pages || !category || !synopsis) {
+    if (!slug || !title || !author || !isbn || !year || !pages || !size || !category || !synopsis) {
       return NextResponse.json(
         { error: "Semua kolom wajib diisi kecuali penyesuaian warna cover." },
         { status: 400 }
@@ -55,8 +56,8 @@ export async function POST(request) {
     const previewGalleryStr = JSON.stringify(Array.isArray(previewGallery) ? previewGallery : []);
 
     const sql = `
-      INSERT INTO katalog (slug, title, author, isbn, year, pages, category, synopsis, coverBg, coverTextColor, coverImage, features, previewGallery)
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+      INSERT INTO katalog (slug, title, author, isbn, year, pages, size, category, synopsis, coverBg, coverTextColor, coverImage, features, previewGallery)
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     `;
     const params = [
       slug.trim().toLowerCase(),
@@ -65,6 +66,7 @@ export async function POST(request) {
       isbn,
       parseInt(year),
       parseInt(pages),
+      size || "14.8 x 21 cm",
       category,
       synopsis,
       coverBg || "linear-gradient(135deg, #1e3a8a 0%, #3b82f6 50%, #1d4ed8 100%)",
@@ -109,6 +111,7 @@ export async function PUT(request) {
       isbn,
       year,
       pages,
+      size,
       category,
       synopsis,
       coverBg,
@@ -127,7 +130,7 @@ export async function PUT(request) {
 
     const sql = `
       UPDATE katalog 
-      SET slug = ?, title = ?, author = ?, isbn = ?, year = ?, pages = ?, category = ?, synopsis = ?, coverBg = ?, coverTextColor = ?, coverImage = ?, features = ?, previewGallery = ?
+      SET slug = ?, title = ?, author = ?, isbn = ?, year = ?, pages = ?, size = ?, category = ?, synopsis = ?, coverBg = ?, coverTextColor = ?, coverImage = ?, features = ?, previewGallery = ?
       WHERE id = ?
     `;
     const params = [
@@ -137,6 +140,7 @@ export async function PUT(request) {
       isbn,
       parseInt(year),
       parseInt(pages),
+      size || "14.8 x 21 cm",
       category,
       synopsis,
       coverBg,

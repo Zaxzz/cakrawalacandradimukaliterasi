@@ -17,6 +17,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
+  metadataBase: new URL("https://cakrawalapublisher.com"),
   title: {
     default: "PT Cakrawala Candradimuka Literasi | Penerbit & Cetak Buku Profesional",
     template: "%s | PT Cakrawala Candradimuka Literasi",
@@ -35,6 +36,11 @@ export const metadata = {
     "Cakrawala Candradimuka Literasi",
   ],
   authors: [{ name: "PT Cakrawala Candradimuka Literasi" }],
+  icons: {
+    icon: "/CCL_header.png",
+    shortcut: "/CCL_header.png",
+    apple: "/CCL_header.png",
+  },
   openGraph: {
     title: "PT Cakrawala Candradimuka Literasi",
     description: "Mewujudkan Buku Berkualitas untuk Generasi Literasi Indonesia secara Profesional.",
@@ -42,6 +48,20 @@ export const metadata = {
     siteName: "Cakrawala Candradimuka Literasi",
     locale: "id_ID",
     type: "website",
+    images: [
+      {
+        url: "/CCL_header.png",
+        width: 500,
+        height: 500,
+        alt: "PT Cakrawala Candradimuka Literasi Logo",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    title: "PT Cakrawala Candradimuka Literasi",
+    description: "Mewujudkan Buku Berkualitas untuk Generasi Literasi Indonesia secara Profesional.",
+    images: ["/CCL_header.png"],
   },
 };
 

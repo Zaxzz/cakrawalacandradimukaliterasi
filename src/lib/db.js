@@ -42,7 +42,7 @@ export async function query(sql, params = []) {
 // Fetch all books with unified output structure (ensuring arrays are parsed)
 export async function getAllBooks() {
   const { data, fallback, error } = await query(
-    "SELECT id, slug, title, author, isbn, year, pages, category, synopsis, coverBg, coverTextColor, coverImage, features, previewGallery FROM katalog ORDER BY id DESC"
+    "SELECT id, slug, title, author, isbn, year, pages, size, category, synopsis, coverBg, coverTextColor, coverImage, features, previewGallery FROM katalog ORDER BY id DESC"
   );
 
   if (fallback || !data) {
@@ -87,7 +87,7 @@ export async function getAllBooks() {
 // Fetch single book by slug
 export async function getBookBySlug(slug) {
   const { data, fallback, error } = await query(
-    "SELECT id, slug, title, author, isbn, year, pages, category, synopsis, coverBg, coverTextColor, coverImage, features, previewGallery FROM katalog WHERE slug = ? LIMIT 1",
+    "SELECT id, slug, title, author, isbn, year, pages, size, category, synopsis, coverBg, coverTextColor, coverImage, features, previewGallery FROM katalog WHERE slug = ? LIMIT 1",
     [slug]
   );
 

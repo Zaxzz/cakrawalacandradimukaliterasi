@@ -5,7 +5,7 @@ import {
   Book, Plus, Edit, Trash2, Tag, Calendar, Hash, FileText,
   ArrowLeft, Search, CheckCircle, XCircle, AlertTriangle,
   BookOpen, Layers, BarChart3, X, ChevronRight, RefreshCw,
-  Lock, LogOut
+  Lock, LogOut, Maximize
 } from "lucide-react";
 import Link from "next/link";
 import FloatingGradients from "@/components/FloatingGradients";
@@ -51,6 +51,7 @@ export default function AdminDashboard() {
     isbn: "",
     year: new Date().getFullYear(),
     pages: 100,
+    size: "14.8 x 21 cm",
     category: "Pendidikan",
     synopsis: "",
     coverBg: coverBgPresets[0].value,
@@ -284,6 +285,7 @@ export default function AdminDashboard() {
       isbn: "",
       year: new Date().getFullYear(),
       pages: 150,
+      size: "14.8 x 21 cm",
       category: "Pendidikan",
       synopsis: "",
       coverBg: coverBgPresets[0].value,
@@ -310,6 +312,7 @@ export default function AdminDashboard() {
       isbn: book.isbn,
       year: book.year,
       pages: book.pages,
+      size: book.size || "14.8 x 21 cm",
       category: book.category,
       synopsis: book.synopsis,
       coverBg: book.coverBg,
@@ -340,9 +343,9 @@ export default function AdminDashboard() {
     }
 
     // Front-end validations
-    const { title, slug, author, isbn, year, pages, category, synopsis, coverImage } = formData;
+    const { title, slug, author, isbn, year, pages, size, category, synopsis, coverImage } = formData;
 
-    if (!title.trim() || !slug.trim() || !author.trim() || !isbn.trim() || !category || !synopsis.trim()) {
+    if (!title.trim() || !slug.trim() || !author.trim() || !isbn.trim() || !size.trim() || !category || !synopsis.trim()) {
       showToast("Semua kolom bertanda bintang (*) wajib diisi!", "error");
       return;
     }
@@ -719,6 +722,9 @@ export default function AdminDashboard() {
                           <span className="flex items-center gap-1">
                             <FileText className="w-3 h-3 text-slate-400 shrink-0" /> Hal: {book.pages}
                           </span>
+                          <span className="flex items-center gap-1">
+                            <Maximize className="w-3 h-3 text-slate-400 shrink-0" /> Ukuran: {book.size || "14.8 x 21 cm"}
+                          </span>
                         </div>
                       </td>
 
@@ -948,6 +954,19 @@ export default function AdminDashboard() {
                     value={formData.pages}
                     onChange={(e) => setFormData(p => ({ ...p, pages: parseInt(e.target.value) || 0 }))}
                     className="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 text-sm text-slate-900"
+                  />
+                </div>
+
+                {/* Size */}
+                <div>
+                  <label className="text-[11px] text-slate-500 font-semibold tracking-wide block mb-1.5">Ukuran Buku *</label>
+                  <input
+                    type="text"
+                    required
+                    value={formData.size}
+                    onChange={(e) => setFormData(p => ({ ...p, size: e.target.value }))}
+                    className="w-full px-3.5 py-2.5 border border-slate-200 rounded-xl focus:outline-none focus:border-blue-500 text-sm text-slate-900"
+                    placeholder="e.g. 14.8 x 21 cm"
                   />
                 </div>
 
