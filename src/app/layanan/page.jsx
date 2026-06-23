@@ -165,14 +165,22 @@ export default function Layanan() {
             </ScrollReveal>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             {publishingSteps.map((step, idx) => (
-              <ScrollReveal key={idx} delay={idx * 0.15}>
+              <ScrollReveal key={idx} delay={idx * 0.15} className="h-full">
                 <div className="relative p-8 rounded-2xl bg-white border border-slate-200/50 h-full flex flex-col justify-between shadow-sm">
                   <div>
-                    <span className="text-4xl font-extrabold text-slate-200 block mb-6 font-mono leading-none">
-                      {step.step}
-                    </span>
+                    <div className="relative flex items-center justify-between mb-6">
+                      <span className="text-4xl font-extrabold text-slate-200 font-mono leading-none">
+                        {step.step}
+                      </span>
+                      {/* Decorative direction connector indicator on desktop */}
+                      {idx < 3 && (
+                        <div className="hidden md:flex absolute top-1/2 -translate-y-1/2 -right-16 z-20 w-8 h-8 rounded-full bg-white border border-slate-200 items-center justify-center text-slate-400 shadow-sm">
+                          <ArrowRight className="w-3.5 h-3.5" />
+                        </div>
+                      )}
+                    </div>
                     <h4 className="text-lg font-bold text-slate-900 mb-2 leading-tight">
                       {step.title}
                     </h4>
@@ -180,12 +188,6 @@ export default function Layanan() {
                       {step.description}
                     </p>
                   </div>
-                  {/* Decorative direction connector indicator on desktop */}
-                  {idx < 3 && (
-                    <div className="hidden md:block absolute top-[45px] right-[-24px] z-20 w-8 h-8 rounded-full bg-slate-50 border border-slate-200 flex items-center justify-center text-slate-400">
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </div>
-                  )}
                 </div>
               </ScrollReveal>
             ))}

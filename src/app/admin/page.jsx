@@ -1088,7 +1088,7 @@ export default function AdminDashboard() {
             </div>
 
             <p className="text-sm text-slate-500 leading-relaxed">
-              Apakah Anda yakin ingin menghapus buku <strong className="text-slate-800">&quot;{selectedBook.title}&quot;</strong> secara permanen dari database MySQL? Tindakan ini tidak dapat dibatalkan.
+              Apakah Anda yakin ingin menghapus buku <strong className="text-slate-800">&quot;{selectedBook.title}&quot;</strong> secara permanen? Tindakan ini tidak dapat dibatalkan.
             </p>
 
             <div className="flex items-center justify-end gap-3 mt-6 pt-4 border-t border-slate-100">
